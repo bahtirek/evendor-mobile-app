@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      eVendor
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goToSettings()">
+        <ion-icon name="settings" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      
+  <ion-item-group *ngFor="let list of listsCollection; let collectionIndex = index">
+    <ion-item-divider color="light" margin-top margin-bottom>{{list.location}}</ion-item-divider>
+    <ion-item-group *ngFor="let items of list.list; let listIndex = index">
+      <button ion-item class="topborder" (click)="items.show = !items.show" *ngIf="items.items.length > 0">{{items.vendorName}}</button>
+      <ion-list *ngIf="items.show">
+        <ion-item *ngFor="let item of items.items; let itemIndex = index">
+         
+          <ion-row [ngClass]="{'checked': item.checked}">
+            <ion-col col-8>{{ item.name }} </ion-col>
+            <ion-col col-3>{{ item.quantity }} {{ item.pack }} </ion-col>
+            <ion-col col-1> <ion-icon name="checkmark" (click)="onItemChecked(collectionIndex, listIndex, itemIndex)"></ion-icon> </ion-col>
+          </ion-row>
+        </ion-item> 
+        
+      </ion-list>
+    </ion-item-group>
+  </ion-item-group>
+  <button ion-button clear block margin-top margin-bottom (click)="onDone()" *ngIf="collectionExist">
+    <span *ngIf="!updating">Done</span> <ion-spinner name="bubbles" *ngIf="updating"></ion-spinner>
+  </button>
+</ion-content>
+<!-- item.checked = !item.checked -->

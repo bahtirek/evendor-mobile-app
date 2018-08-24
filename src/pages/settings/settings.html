@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4 text-center margin-top margin-bottom *ngIf="locations.length>0">Locations</h4>
+  <ion-list margin-top margin-bottom>
+    <ion-item-sliding *ngFor="let location of locations; let i = index">
+
+      <ion-item >
+        {{location.name}}
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="onRemoveFromLocations(i)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    
+  </ion-list>
+  <br>
+  <h4 text-center margin-top>Add location</h4>
+
+<form #f="ngForm" (ngSubmit)="onAddLocation(f)"  >
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" ngModel name="email"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" ngModel name="password" required></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button clear block margin-top margin-bottom [disabled]="!f.valid">Submit</button>
+</form>
+</ion-content>
