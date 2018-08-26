@@ -1,4 +1,3 @@
-import { Location } from './../pages/data/location.interface';
 import { Storage } from '@ionic/Storage';
 
 import { Injectable } from '@angular/core';

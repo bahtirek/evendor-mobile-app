@@ -1,12 +1,10 @@
 import { LocationService } from './../../service/location.service';
-import { Storage } from '@ionic/Storage';
 import { Location } from './../data/location.interface';
 import { StorageService } from './../../service/storage.service';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController,  AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-settings',
@@ -16,7 +14,7 @@ export class SettingsPage implements OnInit{
 
   locations: Location[] = [];
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private storageService: StorageService, private locationService: LocationService, private http: HttpClient) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, private storageService: StorageService, private locationService: LocationService) {
   }
 
   async ngOnInit(){

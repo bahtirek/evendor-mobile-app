@@ -3,7 +3,6 @@ import { StorageService } from './../../service/storage.service';
 import { Item } from './../data/item.interface';
 import { SettingsPage } from './../settings/settings';
 
-import { listService } from './../../service/list.service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -21,7 +20,7 @@ export class HomePage {
   updating = false;
   collectionExist = false;
 
-  constructor(public navCtrl: NavController, private listServ: listService, private storageService: StorageService, private locationService: LocationService) {
+  constructor(public navCtrl: NavController, private storageService: StorageService, private locationService: LocationService) {
 
   }
 
@@ -75,7 +74,6 @@ export class HomePage {
   
   onDone(){
     let d = [];
-    let x = 1;
     for (var c = 0; c < this.listsCollection.length; c++) {
       var coll = this.listsCollection[c];
       for (var l = 0; l < coll.list.length; l++) {

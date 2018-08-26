@@ -40,7 +40,6 @@ import { HomePage } from '../pages/home/home';
     SplashScreen,
     listService,
     StorageService,
-    Storage,
     LocationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
